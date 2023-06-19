@@ -26,6 +26,13 @@ export default defineType({
       name: 'price',
       title: 'Price of the dish in NAIRA',
       type: 'number'
-    }
+    },
+    {
+      name: 'restaurant',
+      title: 'Restaurant',
+      validation: rule=> rule.required(),
+      type: 'reference',
+      to: [{type: 'restaurant'}]
+    },
   ]
 })
