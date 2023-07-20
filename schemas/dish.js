@@ -5,34 +5,46 @@ export default defineType({
   title: 'Dishes',
   type: 'document',
   fields: [
-      {
-        name: 'name',
-        type: 'string',
-        title: 'Dish name',
-        validation: rule=> rule.required(),
+    {
+      name: 'name',
+      type: 'string',
+      title: 'Dish name',
+      validation: (rule) => rule.required(),
     },
     {
-        name: 'description',
-        type: 'string',
-        title: 'Description',
-        validation: rule=> rule.max(200),
+      name: 'description',
+      type: 'string',
+      title: 'Description',
+      validation: (rule) => rule.max(200),
     },
     {
-      name: 'image', 
+      name: 'image',
       type: 'image',
-      title: 'Image of the dish'
+      title: 'Image of the dish',
     },
     {
       name: 'price',
       title: 'Price of the dish in NAIRA',
-      type: 'number'
+      type: 'number',
+    },
+
+    // {
+    //   name: 'category',
+    //   title: 'Category',
+    //   type: 'array',
+    //   of: [{type: 'reference', to: [{type: 'category'}]}],
+    // },
+    {
+      name: 'category',
+      title: 'Category',
+      type: 'reference',
+      to: [{type: 'category'}],
     },
     {
       name: 'restaurant',
       title: 'Restaurant',
-      validation: rule=> rule.required(),
       type: 'reference',
-      to: [{type: 'restaurant'}]
+      to: [{type: 'restaurant'}],
     },
-  ]
+  ],
 })
